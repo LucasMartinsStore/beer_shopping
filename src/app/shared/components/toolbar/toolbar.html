@@ -1,0 +1,59 @@
+<header class="container-header">
+  <mat-toolbar color="primary">
+    <button mat-icon-button class="menu-button" (click)="toggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span class="brand">BrewHaven</span>
+
+    <nav class="container-links desktop-nav">
+      <div class="container-content">
+        <ul class="nav-links">
+          <li><a class="nav-link" routerLink="/">Home</a></li>
+          <li><a class="nav-link" routerLink="/beers">Cardápio</a></li>
+          <li><a class="nav-link" routerLink="/about">Contato</a></li>
+          <li><a class="nav-link" routerLink="/login">Login</a></li>
+        </ul>
+        <div class="nav-buttons">
+          <button mat-button>Registrar</button>
+        </div>
+      </div>
+    </nav>
+  </mat-toolbar>
+</header>
+
+<mat-sidenav-container class="sidenav-container" *ngIf="isMobileMenuOpen">
+  <mat-sidenav #sidenav mode="over" class="sidenav" [opened]="isMobileMenuOpen">
+    <div class="sidenav-header">
+      <button mat-icon-button (click)="closeSidenav()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/" (click)="closeSidenav()">
+        <mat-icon matListItemIcon>home</mat-icon>
+        <span matListItemTitle>Home</span>
+      </a>
+      <a mat-list-item routerLink="/beers" (click)="closeSidenav()">
+        <mat-icon matListItemIcon>sports_bar</mat-icon>
+        <span matListItemTitle>Cardápio</span>
+      </a>
+      <a mat-list-item routerLink="/about" (click)="closeSidenav()">
+        <mat-icon matListItemIcon>contact_mail</mat-icon>
+        <span matListItemTitle>Contato</span>
+      </a>
+      <a mat-list-item routerLink="/login" (click)="closeSidenav()">
+        <mat-icon matListItemIcon>login</mat-icon>
+        <span matListItemTitle>Login</span>
+      </a>
+      <mat-divider></mat-divider>
+      <a mat-list-item (click)="closeSidenav()">
+        <mat-icon matListItemIcon>person_add</mat-icon>
+        <span matListItemTitle>Registrar</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="backdrop" (click)="closeSidenav()"></div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
