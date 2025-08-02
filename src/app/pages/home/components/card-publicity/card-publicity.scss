@@ -1,0 +1,310 @@
+.card-publicity {
+  background: linear-gradient(
+    145deg,
+    var(--mat-sys-surface),
+    var(--mat-sys-surface-variant)
+  );
+  border-radius: 16px;
+  padding: 32px 24px;
+  margin: 16px auto; // Auto para centralizar horizontalmente
+  max-width: 600px; // Aumenta a largura para acomodar layout horizontal
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--mat-sys-outline-variant);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex; // Muda para flex
+  flex-direction: row; // Layout horizontal
+  align-items: center; // Centraliza verticalmente
+  gap: 24px; // Espaçamento entre ícone e conteúdo
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transition: left 0.6s ease;
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-color: var(--mat-sys-primary);
+
+    &::before {
+      left: 100%;
+    }
+
+    .icon-container {
+      transform: scale(1.1) rotate(5deg);
+
+      mat-icon {
+        color: var(--mat-sys-primary);
+      }
+    }
+
+    h2 {
+      color: var(--mat-sys-primary);
+    }
+  }
+
+  // Container do ícone
+  .icon-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(
+      135deg,
+      var(--mat-sys-primary-container),
+      var(--mat-sys-tertiary-container)
+    );
+    border-radius: 50%;
+    margin: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0; // Evita que o ícone seja comprimido
+
+    mat-icon {
+      font-size: 28px;
+      width: 28px;
+      height: 28px;
+      color: var(--mat-sys-on-primary-container);
+      transition: color 0.3s ease;
+    }
+  }
+
+  // Área de conteúdo
+  .content-area {
+    flex: 1; // Ocupa o espaço restante
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left; // Alinha texto à esquerda
+  }
+
+  // Título
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--mat-sys-on-surface);
+    margin: 0 0 8px 0; // Reduz margem inferior
+    line-height: 1.3;
+    transition: color 0.3s ease;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  // Conteúdo
+  p {
+    font-size: 1rem;
+    color: var(--mat-sys-on-surface-variant);
+    margin: 0;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+  }
+}
+
+// Variação para card em destaque
+.card-publicity.featured {
+  background: linear-gradient(
+    145deg,
+    var(--mat-sys-primary-container),
+    var(--mat-sys-tertiary-container)
+  );
+  border-color: var(--mat-sys-primary);
+
+  h2 {
+    color: var(--mat-sys-on-primary-container);
+  }
+
+  p {
+    color: var(--mat-sys-on-primary-container);
+  }
+
+  .icon-container {
+    background: var(--mat-sys-primary);
+
+    mat-icon {
+      color: var(--mat-sys-on-primary);
+    }
+  }
+}
+
+// Responsividade para tablets (≤1024px)
+@media (max-width: 1024px) {
+  .card-publicity {
+    padding: 28px 20px;
+    max-width: 550px; // Reduz um pouco em tablets
+    gap: 20px;
+
+    .icon-container {
+      width: 56px;
+      height: 56px;
+
+      mat-icon {
+        font-size: 24px;
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    h2 {
+      font-size: 1.4rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+    }
+  }
+}
+
+// Responsividade para tablets pequenos (≤768px)
+@media (max-width: 768px) {
+  .card-publicity {
+    flex-direction: column; // Volta para layout vertical em mobile
+    text-align: center;
+    padding: 24px 18px;
+    margin: 12px auto; // Mantém centralização
+    border-radius: 12px;
+    max-width: 350px; // Reduz para tablets pequenos
+    gap: 16px;
+
+    .icon-container {
+      width: 52px;
+      height: 52px;
+
+      mat-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    .content-area {
+      text-align: center; // Centraliza texto em mobile
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+}
+
+// Responsividade para mobile (≤480px)
+@media (max-width: 480px) {
+  .card-publicity {
+    padding: 20px 16px;
+    margin: 10px auto; // Mantém centralização
+    border-radius: 10px;
+    max-width: 320px; // Limita em mobile
+    gap: 14px;
+
+    .icon-container {
+      width: 48px;
+      height: 48px;
+
+      mat-icon {
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 0.85rem;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Responsividade para mobile muito pequeno (≤360px)
+@media (max-width: 360px) {
+  .card-publicity {
+    padding: 18px 14px;
+    margin: 8px auto; // Mantém centralização
+    max-width: 280px; // Ainda menor para telas muito pequenas
+    gap: 12px;
+
+    .icon-container {
+      width: 44px;
+      height: 44px;
+
+      mat-icon {
+        font-size: 14px;
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+// Animações adicionais para melhor UX
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-publicity {
+  animation: cardAppear 0.6s ease-out;
+}
+
+// Estados de foco para acessibilidade
+.card-publicity:focus {
+  outline: 2px solid var(--mat-sys-primary);
+  outline-offset: 2px;
+}
+
+// Modo escuro (se implementado)
+@media (prefers-color-scheme: dark) {
+  .card-publicity {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
