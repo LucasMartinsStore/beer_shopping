@@ -5,20 +5,22 @@
     var(--mat-sys-surface-variant)
   );
   border-radius: 16px;
-  padding: 32px 24px;
-  margin: 16px auto; // Auto para centralizar horizontalmente
-  max-width: 600px; // Aumenta a largura para acomodar layout horizontal
-  width: 100%;
+  padding: 24px;
+  margin: 16px;
+  width: 280px;
+  height: 280px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
   border: 1px solid var(--mat-sys-outline-variant);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  display: flex; // Muda para flex
-  flex-direction: row; // Layout horizontal
-  align-items: center; // Centraliza verticalmente
-  gap: 24px; // Espaçamento entre ícone e conteúdo
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
 
   &::before {
     content: "";
@@ -58,13 +60,12 @@
     }
   }
 
-  // Container do ícone
   .icon-container {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 64px;
-    height: 64px;
+    width: 72px;
+    height: 72px;
     background: linear-gradient(
       135deg,
       var(--mat-sys-primary-container),
@@ -74,12 +75,12 @@
     margin: 0;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    flex-shrink: 0; // Evita que o ícone seja comprimido
+    flex-shrink: 0;
 
     mat-icon {
-      font-size: 28px;
-      width: 28px;
-      height: 28px;
+      font-size: 36px;
+      width: 36px;
+      height: 36px;
       color: var(--mat-sys-on-primary-container);
       transition: color 0.3s ease;
     }
@@ -87,35 +88,39 @@
 
   // Área de conteúdo
   .content-area {
-    flex: 1; // Ocupa o espaço restante
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    text-align: left; // Alinha texto à esquerda
+    align-items: center;
+    text-align: center;
+    flex: 1;
   }
 
-  // Título
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 700;
     color: var(--mat-sys-on-surface);
-    margin: 0 0 8px 0; // Reduz margem inferior
-    line-height: 1.3;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
     transition: color 0.3s ease;
     font-family: "Montserrat", sans-serif;
+    text-align: center;
   }
 
-  // Conteúdo
   p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--mat-sys-on-surface-variant);
     margin: 0;
-    line-height: 1.6;
+    line-height: 1.4;
     transition: color 0.3s ease;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 
-// Variação para card em destaque
 .card-publicity.featured {
   background: linear-gradient(
     145deg,
@@ -141,16 +146,46 @@
   }
 }
 
-// Responsividade para tablets (≤1024px)
 @media (max-width: 1024px) {
   .card-publicity {
-    padding: 28px 20px;
-    max-width: 550px; // Reduz um pouco em tablets
-    gap: 20px;
+    width: 250px;
+    height: 250px;
+    padding: 20px;
+    gap: 14px;
 
     .icon-container {
-      width: 56px;
-      height: 56px;
+      width: 60px;
+      height: 60px;
+
+      mat-icon {
+        font-size: 28px;
+        width: 28px;
+        height: 28px;
+      }
+    }
+
+    h2 {
+      font-size: 1.2rem;
+    }
+
+    p {
+      font-size: 0.85rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .card-publicity {
+    width: 220px;
+    height: 220px;
+    padding: 18px;
+    margin: 12px;
+    border-radius: 12px;
+    gap: 12px;
+
+    .icon-container {
+      width: 52px;
+      height: 52px;
 
       mat-icon {
         font-size: 24px;
@@ -159,110 +194,8 @@
       }
     }
 
-    h2 {
-      font-size: 1.4rem;
-    }
-
-    p {
-      font-size: 0.95rem;
-    }
-  }
-}
-
-// Responsividade para tablets pequenos (≤768px)
-@media (max-width: 768px) {
-  .card-publicity {
-    flex-direction: column; // Volta para layout vertical em mobile
-    text-align: center;
-    padding: 24px 18px;
-    margin: 12px auto; // Mantém centralização
-    border-radius: 12px;
-    max-width: 350px; // Reduz para tablets pequenos
-    gap: 16px;
-
-    .icon-container {
-      width: 52px;
-      height: 52px;
-
-      mat-icon {
-        font-size: 18px;
-        width: 18px;
-        height: 18px;
-      }
-    }
-
     .content-area {
-      text-align: center; // Centraliza texto em mobile
-    }
-
-    h2 {
-      font-size: 1.3rem;
-      margin-bottom: 12px;
-    }
-
-    p {
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    &:hover {
-      transform: translateY(-4px);
-    }
-  }
-}
-
-// Responsividade para mobile (≤480px)
-@media (max-width: 480px) {
-  .card-publicity {
-    padding: 20px 16px;
-    margin: 10px auto; // Mantém centralização
-    border-radius: 10px;
-    max-width: 320px; // Limita em mobile
-    gap: 14px;
-
-    .icon-container {
-      width: 48px;
-      height: 48px;
-
-      mat-icon {
-        font-size: 16px;
-        width: 16px;
-        height: 16px;
-      }
-    }
-
-    h2 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 0.85rem;
-    }
-
-    &:hover {
-      transform: translateY(-2px);
-    }
-  }
-}
-
-// Responsividade para mobile muito pequeno (≤360px)
-@media (max-width: 360px) {
-  .card-publicity {
-    padding: 18px 14px;
-    margin: 8px auto; // Mantém centralização
-    max-width: 280px; // Ainda menor para telas muito pequenas
-    gap: 12px;
-
-    .icon-container {
-      width: 44px;
-      height: 44px;
-
-      mat-icon {
-        font-size: 14px;
-        width: 14px;
-        height: 14px;
-      }
+      text-align: center;
     }
 
     h2 {
@@ -272,11 +205,84 @@
 
     p {
       font-size: 0.8rem;
+      line-height: 1.3;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
     }
   }
 }
 
-// Animações adicionais para melhor UX
+@media (max-width: 480px) {
+  .card-publicity {
+    width: 180px;
+    height: 180px;
+    padding: 16px;
+    margin: 8px;
+    border-radius: 10px;
+    gap: 10px;
+
+    .icon-container {
+      width: 44px;
+      height: 44px;
+
+      mat-icon {
+        font-size: 20px;
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    h2 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    p {
+      font-size: 0.75rem;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .card-publicity {
+    width: 160px;
+    height: 160px;
+    padding: 14px;
+    margin: 6px;
+    gap: 8px;
+
+    .icon-container {
+      width: 40px;
+      height: 40px;
+
+      mat-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    h2 {
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    p {
+      font-size: 0.7rem;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+    }
+  }
+}
+
 @keyframes cardAppear {
   from {
     opacity: 0;
@@ -292,13 +298,11 @@
   animation: cardAppear 0.6s ease-out;
 }
 
-// Estados de foco para acessibilidade
 .card-publicity:focus {
   outline: 2px solid var(--mat-sys-primary);
   outline-offset: 2px;
 }
 
-// Modo escuro (se implementado)
 @media (prefers-color-scheme: dark) {
   .card-publicity {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.2);

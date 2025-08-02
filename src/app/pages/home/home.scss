@@ -5,12 +5,61 @@ main {
   margin: 0;
   display: flex;
   flex-direction: column;
+
   .container-publicity {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+
     h1 {
       text-align: center;
-      margin: 44px 0;
+      margin: 44px 0 32px 0;
       font-size: 2rem;
       color: var(--mat-sys-on-surface);
+    }
+
+    // Flex wrapper para os cards
+    .cards-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      align-items: flex-start; // Alinha cards no topo
+    }
+  }
+}
+
+// Responsividade para o container
+@media (max-width: 768px) {
+  main {
+    .container-publicity {
+      padding: 16px;
+
+      h1 {
+        font-size: 1.6rem;
+        margin: 32px 0 24px 0;
+      }
+
+      .cards-wrapper {
+        gap: 12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    .container-publicity {
+      padding: 12px;
+
+      h1 {
+        font-size: 1.4rem;
+        margin: 24px 0 20px 0;
+      }
+
+      .cards-wrapper {
+        gap: 8px;
+      }
     }
   }
 }
