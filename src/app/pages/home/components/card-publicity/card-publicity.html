@@ -1,7 +1,22 @@
-<div class="card-publicity">
+<div
+  class="card-publicity"
+  #cardElement
+  (click)="toggleCard()"
+  [class.expanded]="isExpanded"
+>
   <span class="icon-container">
     <mat-icon>{{ icon }}</mat-icon>
   </span>
-  <h2>{{ title }}</h2>
-  <p>{{ content }}</p>
+  <div class="content-area" #contentArea>
+    <h2>{{ title }}</h2>
+    <p class="content-text" [class.expanded]="isExpanded">{{ content }}</p>
+    <button class="expand-button" *ngIf="!isExpanded" type="button">
+      <mat-icon>expand_more</mat-icon>
+      <span>Ler mais</span>
+    </button>
+    <button class="collapse-button" *ngIf="isExpanded" type="button">
+      <mat-icon>expand_less</mat-icon>
+      <span>Ler menos</span>
+    </button>
+  </div>
 </div>
